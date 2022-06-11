@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import AlbumList from './components/AlbumList';
+import PhotoList from './components/PhotoList';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createStackNavigator();
+
+// Create a component
+export default  App = () => (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="albumList"
+        component={AlbumList}
+        options={{title: 'Albums'}}
+      />
+      <Stack.Screen
+        name="photoList"
+        component={PhotoList}
+        options={{title: 'Photos'}}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
+
